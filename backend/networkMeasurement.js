@@ -41,7 +41,7 @@ const measureNetworkStats = async () => {
 
     const data = {
       downloadSpeed: downloadSpeed.mbps,
-      uploadSpeed: uploadSpeed.mbps/5,
+      uploadSpeed: (uploadSpeed.mbps/5).toFixed(2),
       pingTime
     };
 

@@ -4,7 +4,7 @@ const testNetworkSpeed = new NetworkSpeed();
 const ping = require('ping');
 const fs = require('fs');
 
-const measurementInterval = 5000; // Interval in milliseconds
+const measurementInterval = 50000; // Interval in milliseconds
 let measurementIntervalId = null; // Interval ID for measurement task
 
 // Function to measure and save network statistics

@@ -4,7 +4,9 @@ import useInterval from './useInterval'; // Import the useInterval hook
 import Axios from 'axios';
 import './App.css';
 import Divider from '@mui/material/Divider';
-
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import NetworkPingIcon from '@mui/icons-material/NetworkPing';
 function App() {
   const [data, setData] = useState({ download: 0, upload: 0, ping: 0 });
   const [measurementRunning, setMeasurementRunning] = useState(true); // Track measurement running state
@@ -36,17 +38,26 @@ function App() {
         <h2 className="heading" style={{fontWeight: 700}}>Bandwidth Monitoring</h2>
         <div className="speeds">
           <div className="download">
+            <div className="download-icon-placeholder">
+            <DownloadIcon className="download-icon" style={{marginTop: '16px',marginRight: '5px'}}  />
             <h4 className="speed-label" style={{fontWeight: 700}}>Download Speed</h4>
-            <h2 className="speed-value" style={{color: '#587DFE'}}>{data.downloadSpeed}</h2>
+            </div> 
+            <h2 className="speed-value" style={{color: '#587DFE',marginTop: '5px'}}>{data.downloadSpeed}</h2>
           </div>
           <div className="upload">
+            <div className="upload-icon-placeholder">
+            <UploadIcon className="upload-icon"  style={{marginTop: '16px',marginRight: '5px'}}/>
             <h4 className="speed-label" style={{fontWeight: 700}}>Upload Speed</h4>
-            <h2 className="speed-value" style={{color: '#FEA62C'}}>{data.uploadSpeed}</h2>
+            </div> 
+            <h2 className="speed-value" style={{color: '#FEA62C',marginTop: '5px'}}>{data.uploadSpeed}</h2>
           </div>
         </div>
         <Divider />
         <div className="ping">
+          <div className="ping-icon-placeholder" style={{display:'flex'}}>
+          <NetworkPingIcon className="ping-icon" style={{marginTop: '16px',marginRight: '5px'}}/>
           <h5 className="ping-label">Ping</h5>
+          </div> 
           <p className="ping-value">{data.pingTime}</p>
         </div>
         {measurementRunning && (

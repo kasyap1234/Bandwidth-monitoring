@@ -46,3 +46,12 @@
 .font-link{
   font-family: 'Signika', sans-serif;
 }
+.download-icon-placeholder{
+  display: flex; 
+  
+  
+}
+.upload-icon-placeholder{
+  display: flex; 
+
+}

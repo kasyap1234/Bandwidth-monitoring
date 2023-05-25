@@ -63,12 +63,7 @@ const LineChart = () => {
             borderColor: '#325FF7',
             fill: false
           },
-          {
-            label: 'Ping Time',
-            data: filteredData.map(item => parseFloat(item.pingTime)),
-            borderColor: 'red',
-            fill: false
-          }
+          
         ]
       };
 

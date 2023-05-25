@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300&display=swap');
+
 .App {
   display: flex;
   justify-content: center;
   height: 100vh;
   background-color: #f0f0f0;
-  padding-top: 20px;
+ 
+  
+}
+.chart{
+  
+  padding-top: 70px; 
 }
 
 .container {
@@ -43,7 +50,7 @@
 }
 
 
-.font-link{
+body{
   font-family: 'Signika', sans-serif;
 }
 .download-icon-placeholder{

@@ -47,7 +47,7 @@ router.get('/graph-data', (req, res) => {
   });
 });
 
-// API route to stop the measurement of network stats
+
 router.get('/stop-measurement', (req, res) => {
   networkMeasurement.stopNetworkMeasurement();
   res.json({ message: 'Measurement stopped' });

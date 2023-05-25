@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import Button from '@mui/material/Button';
 import useInterval from './useInterval'; 
 import Axios from 'axios';
@@ -8,9 +8,12 @@ import DownloadIcon from '@mui/icons-material/Download';
 import UploadIcon from '@mui/icons-material/Upload';
 import NetworkPingIcon from '@mui/icons-material/NetworkPing';
 import LineChart from './LineChart';
+
+
 function App() {
   const [data, setData] = useState({ download: 0, upload: 0, ping: 0 });
   const [measurementRunning, setMeasurementRunning] = useState(true); 
+  
 
   // Fetch network stats function
   const fetchNetworkStats = async () => {
@@ -32,6 +35,11 @@ function App() {
   const stopMeasurement = () => {
     setMeasurementRunning(false);
   };
+  const deleteGraphData = () => {
+    Axios.delete('http://localhost:3300/api/graph-data').then((response)=>{
+      console.log(response);
+      
+    })
 
   return (
     <div className="App">

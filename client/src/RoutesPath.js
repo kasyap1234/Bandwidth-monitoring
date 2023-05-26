@@ -1,15 +1,18 @@
-
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignupPage from './SignupPage';
 import LineChart from './LineChart';
-
+import Home from './Home';
+import LoginPage from './LoginPage'; 
 const RoutesPath = () => {
   return (
     <Router>
-      
-        <Route exact path="/" component={SignupPage} />
-        <Route exact path="/chart" component={LineChart} />
-      
+      <Routes>
+        <Route path="/" element={<SignupPage />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/chart" element={<LineChart />} />
+        <Route path="/login" element={<LoginPage />} /> 
+      </Routes>
     </Router>
   );
 };

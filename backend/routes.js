@@ -54,8 +54,16 @@ router.get('/stop-measurement', (req, res) => {
   res.json({ message: 'Measurement stopped' });
 });
 router.delete('/delete-measurement', (req, res) => {
-  fs.unlink()
-
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.error('Error deleting file:', err);
+      res.status(500).send('Error deleting file');
+    } else {
+      console.log('File deleted successfully');
+      res.sendStatus(200);
+    }
+  });
+});
 
 module.exports = router;
 

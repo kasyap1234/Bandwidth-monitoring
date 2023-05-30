@@ -1,75 +1,11 @@
-import React, { useState } from 'react';
-import Button from '@mui/material/Button';
-import useInterval from './useInterval'; // Import the useInterval hook
-import Axios from 'axios';
-import './App.css';
-import Divider from '@mui/material/Divider';
-import DownloadIcon from '@mui/icons-material/Download';
-import UploadIcon from '@mui/icons-material/Upload';
-import NetworkPingIcon from '@mui/icons-material/NetworkPing';
-function App() {
-  const [data, setData] = useState({ download: 0, upload: 0, ping: 0 });
-  const [measurementRunning, setMeasurementRunning] = useState(true); // Track measurement running state
-
-  // Fetch network stats function
-  const fetchNetworkStats = async () => {
-    try {
-      const response = await Axios.get('http://localhost:3300/api/network-stats');
-      setData(response.data);
-    } catch (error) {
-      console.error('Failed to fetch network statistics:', error);
-    }
-  };
-
-  // Define the polling interval (in milliseconds)
-  const pollingInterval = 5000;
-
-  // Use the useInterval hook to periodically fetch network stats
-  useInterval(fetchNetworkStats, pollingInterval, measurementRunning);
-
-  // Function to stop the measurement and clear the interval
-  const stopMeasurement = () => {
-    setMeasurementRunning(false);
-  };
-
-  return (
-    <div className="App">
-      <div className="container">
-        <h2 className="heading" style={{fontWeight: 700}}>Bandwidth Monitoring</h2>
-        <div className="speeds">
-          <div className="download">
-            <div className="download-icon-placeholder">
-            <DownloadIcon className="download-icon" style={{marginTop: '16px',marginRight: '5px'}}  />
-            <h4 className="speed-label" style={{fontWeight: 700}}>Download Speed</h4>
+import {BrowserRouter, Routes,Route} from 'react-router-dom';
+import RoutesPath from './RoutesPath'; 
+function App(){
+    return(
+        <div>
+            <RoutesPath /> 
             </div> 
-            <h2 className="speed-value" style={{color: '#587DFE',marginTop: '5px'}}>{data.downloadSpeed}</h2>
-          </div>
-          <div className="upload">
-            <div className="upload-icon-placeholder">
-            <UploadIcon className="upload-icon"  style={{marginTop: '16px',marginRight: '5px'}}/>
-            <h4 className="speed-label" style={{fontWeight: 700}}>Upload Speed</h4>
-            </div> 
-            <h2 className="speed-value" style={{color: '#FEA62C',marginTop: '5px'}}>{data.uploadSpeed}</h2>
-          </div>
-        </div>
-        <Divider />
-        <div className="ping">
-          <div className="ping-icon-placeholder" style={{display:'flex'}}>
-          <NetworkPingIcon className="ping-icon" style={{marginTop: '16px',marginRight: '5px'}}/>
-          <h5 className="ping-label">Ping</h5>
-          </div> 
-          <p className="ping-value">{data.pingTime}</p>
-        </div>
-        {measurementRunning && (
-          <Button variant="contained" onClick={stopMeasurement} className="stop-button">
-            Stop Measurement
-          </Button>
-        )}
-      </div>
-    </div>
-  );
+    ); 
+
 }
-
-export default App;
-
-
+export default App; 

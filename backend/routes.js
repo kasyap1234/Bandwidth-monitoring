@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const networkMeasurement = require('./networkMeasurement');
+const path=require('path'); 
+const PathLink=path.join(__dirname,'network-stats.txt');
+
 
 // API route to fetch the latest network statistics
 router.get('/network-stats', (req, res) => {
@@ -46,11 +49,30 @@ router.get('/graph-data', (req, res) => {
     res.json(graphData);
   });
 });
+// send file 
 
-// API route to stop the measurement of network stats
+
+
+router.get('/download-file', (req, res) => {
+  res.download(PathLink);
+}
+); 
+
+
 router.get('/stop-measurement', (req, res) => {
   networkMeasurement.stopNetworkMeasurement();
   res.json({ message: 'Measurement stopped' });
+});
+router.delete('/delete-measurement', (req, res) => {
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.error('Error deleting file:', err);
+      res.status(500).send('Error deleting file');
+    } else {
+      console.log('File deleted successfully');
+      res.sendStatus(200);
+    }
+  });
 });
 
 module.exports = router;

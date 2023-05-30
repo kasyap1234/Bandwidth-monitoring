@@ -4,14 +4,14 @@ const testNetworkSpeed = new NetworkSpeed();
 const ping = require('ping');
 const fs = require('fs');
 
-const measurementInterval = 5000; // Interval in milliseconds
-let measurementIntervalId = null; // Interval ID for measurement task
+const measurementInterval = 5000; 
+let measurementIntervalId = null; 
 
-// Function to measure and save network statistics
+
 const measureNetworkStats = async () => {
   try {
     const baseUrl = 'https://eu.httpbin.org/stream-bytes/500000';
-    const downloadSizeInBytes = 500000;
+    const downloadSizeInBytes = 1500000;
     const uploadOptions = {
       hostname: 'www.google.com',
       port: 80,

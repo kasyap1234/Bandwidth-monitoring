@@ -4,7 +4,9 @@ const router = express.Router();
 const fs = require('fs');
 const networkMeasurement = require('./networkMeasurement');
 const path=require('path'); 
-const PathLink=path.join(__dirname,'./network-stats.txt');
+const PathLink=path.join(__dirname,'network-stats.txt');
+
+
 // API route to fetch the latest network statistics
 router.get('/network-stats', (req, res) => {
   // Read the network statistics from the file and return the latest data
@@ -47,6 +49,14 @@ router.get('/graph-data', (req, res) => {
     res.json(graphData);
   });
 });
+// send file 
+
+
+
+router.get('/download-file', (req, res) => {
+  res.download(PathLink);
+}
+); 
 
 
 router.get('/stop-measurement', (req, res) => {

@@ -21,7 +21,7 @@ Before using this code, make sure you have the following dependencies installed:
 
 ## Installation
 
-To install the required dependencies, run the following command:
+To install the required dependencies,  run the following command:
 
 ```
 npm install react mui axios react-chartjs-2
